@@ -11,11 +11,11 @@ import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
-import * as styles from './blog-post.module.css'
+import * as styles from './trivia.module.css'
 
-class AttractionsTemplate extends React.Component {
+class TriviaTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
+    const post = get(this.props, 'data.contentfulTrivia')
     const previous = get(this.props, 'data.previous')
     const next = get(this.props, 'data.next')
     const plainTextDescription = documentToPlainTextString(
@@ -83,20 +83,17 @@ class AttractionsTemplate extends React.Component {
   }
 }
 
-export default AttractionsTemplate
+export default TriviaTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
+  query TriviaBySlug(
     $slug: String!
     $previousPostSlug: String
     $nextPostSlug: String
   ) {
-    contentfulBlogPost(slug: { eq: $slug }) {
+    contentfulTrivia(slug: { eq: $slug }) {
       slug
       title
-      author {
-        name
-      }
       publishDate(formatString: "MMMM Do, YYYY")
       rawDate: publishDate
       heroImage {

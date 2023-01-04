@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
-class BlogIndex extends React.Component {
+class Trivias extends React.Component {
   render() {
     const posts = get(this, 'props.data.allContentfulTrivia.nodes')
 
@@ -21,7 +21,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default Trivias
 
 export const pageQuery = graphql`
   query TriviaIndexQuery {

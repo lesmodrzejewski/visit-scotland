@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
-class BlogIndex extends React.Component {
+class Attractions extends React.Component {
   render() {
     const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
 
@@ -21,7 +21,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default Attractions
 
 export const pageQuery = graphql`
   query BlogIndexQuery {

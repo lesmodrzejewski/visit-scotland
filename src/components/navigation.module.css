@@ -3,7 +3,7 @@
   justify-content: space-between;
   max-width: var(--size-max-width);
   align-items: center;
-  margin: 0 auto;
+  margin: 50px auto 0 auto;
   padding: var(--space-2xl) var(--size-gutter);
 }
 
@@ -15,12 +15,15 @@
 }
 
 .navigationItem {
+  font-size: 1.5rem;
+
   display: inline-flex;
   align-items: center;
   flex-direction: row;
 }
 
 .navigationItem a {
+  font-size: 1.5rem;
   border-bottom: 1.5px solid transparent;
   color: currentColor;
   text-decoration: none;

@@ -4,9 +4,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   // Define a template for blog post
-  const blogPost = path.resolve('./src/templates/blog-post.js')
 
-  const result = await graphql(
+  const postResult = await graphql(
     `
       {
         allContentfulBlogPost {
@@ -19,15 +18,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors) {
+  if (postResult.errors) {
     reporter.panicOnBuild(
       `There was an error loading your Contentful posts`,
-      result.errors
+      postResult.errors
     )
     return
   }
 
-  const posts = result.data.allContentfulBlogPost.nodes
+  const posts = postResult.data.allContentfulBlogPost.nodes
 
   // Create blog posts pages
   // But only if there's at least one blog post found in Contentful
@@ -41,7 +40,54 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       createPage({
         path: `/blog/${post.slug}/`,
-        component: blogPost,
+        component: path.resolve('./src/templates/blog-post.js'),
+        context: {
+          slug: post.slug,
+          previousPostSlug,
+          nextPostSlug,
+        },
+      })
+    })
+  }
+
+  // ++++++++++TRIVIAS
+
+  const triviaResult = await graphql(
+    `
+      {
+        allContentfulTrivia {
+          nodes {
+            title
+            slug
+          }
+        }
+      }
+    `
+  )
+
+  if (triviaResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your Contentful posts`,
+      triviaResult.errors
+    )
+    return
+  }
+
+  const triviaPosts = triviaResult.data.allContentfulTrivia.nodes
+
+  // Create blog posts pages
+  // But only if there's at least one blog post found in Contentful
+  // `context` is available in the template as a prop and as a variable in GraphQL
+
+  if (triviaPosts.length > 0) {
+    triviaPosts.forEach((post, index) => {
+      const previousPostSlug = index === 0 ? null : triviaPosts[index - 1].slug
+      const nextPostSlug =
+        index === triviaPosts.length - 1 ? null : triviaPosts[index + 1].slug
+
+      createPage({
+        path: `/blog/${post.slug}/`,
+        component: path.resolve('./src/templates/trivia.js'),
         context: {
           slug: post.slug,
           previousPostSlug,
