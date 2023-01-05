@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-  // Define a template for trivia
+  // Define a template for trivia 
 
   const triviaResult = await graphql(
     `
