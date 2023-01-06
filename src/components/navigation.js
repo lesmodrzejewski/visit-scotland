@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-// import Image from 'gatsby-image'
-import flag from '../images/flag.jpeg'
 
 import * as styles from './navigation.module.css'
 
@@ -9,7 +7,6 @@ const Navigation = () => (
   <nav role="navigation" className={styles.container} aria-label="Main">
     <Link to="/" className={styles.logoLink}>
       {/* <span className={styles.logo} /> */}
-      <img className={styles.flag} src={flag} alt="Scottish Flag" />
       <span className={styles.navigationItem}>Scotland</span>
     </Link>
     <ul className={styles.navigation}>
