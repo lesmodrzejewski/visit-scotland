@@ -1,35 +1,34 @@
-import React from 'react'
 import { Link } from 'gatsby'
-// import Image from 'gatsby-image'
+import React from 'react'
 import flag from '../images/flag.jpeg'
-
 import * as styles from './navigation.module.css'
 
 const Navigation = () => (
-  <nav role="navigation" className={styles.container} aria-label="Main">
-    <Link to="/" className={styles.logoLink}>
-      <img className={styles.flag} src={flag} alt="Scottish Flag" />
-
-      {/* <span className={styles.logo} /> */}
-    </Link>
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
+  <div className={styles.navContainer}>
+    <div className={styles.logo}>
+      <img className={styles.flag} src={flag} alt="scottish flag" />
+    </div>
+    <ul className={styles.navItemsContainer}>
+      <li className={styles.navItem}>
+        {' '}
         <Link to="/" activeClassName="active">
           Home
         </Link>
       </li>
-      <li className={styles.navigationItem}>
+      <li className={styles.navItem}>
+        {' '}
         <Link to="/attractions/" activeClassName="active">
           Attractions
         </Link>
       </li>
-      <li className={styles.navigationItem}>
+      <li className={styles.navItem}>
+        {' '}
         <Link to="/trivias/" activeClassName="active">
           Trivias
         </Link>
       </li>
     </ul>
-  </nav>
+  </div>
 )
 
 export default Navigation
