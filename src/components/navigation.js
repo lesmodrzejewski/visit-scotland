@@ -8,10 +8,9 @@ import * as styles from './navigation.module.css'
 const Navigation = () => (
   <nav role="navigation" className={styles.container} aria-label="Main">
     <Link to="/" className={styles.logoLink}>
-    <img className={styles.flag} src={flag} alt="Scottish Flag" />
+      <img className={styles.flag} src={flag} alt="Scottish Flag" />
 
       {/* <span className={styles.logo} /> */}
-      <span className={styles.navigationItem}>Scotland</span>
     </Link>
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}>
