@@ -6,7 +6,9 @@ import * as styles from './navigation.module.css'
 const Navigation = () => (
   <div className={styles.navContainer}>
     <div className={styles.logo}>
-      <img className={styles.flag} src={flag} alt="scottish flag" />
+      <Link to="/">
+        <img className={styles.flag} src={flag} alt="scottish flag" />
+      </Link>
     </div>
     <ul className={styles.navItemsContainer}>
       <li className={styles.navItem}>
